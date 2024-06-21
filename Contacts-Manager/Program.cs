@@ -5,17 +5,6 @@
         
         static private List<string> contacts= new List<string>();
         enum enUserOptions { addContact = 1, removeContact = 2, viewAllContacts = 3 }
-        static void Main(string[] args)
-        {
-            ContactsManager();           
-        }
-
-        static private string readContact()
-        {
-            Console.WriteLine("Enter the contact name");
-            string input = Console.ReadLine();
-            return input;
-        }
         static public List<string> AddContact(string contact)
         {
             if (!string.IsNullOrEmpty(contact) && !contacts.Contains(contact.ToUpper()))
@@ -37,6 +26,12 @@
             contacts.Clear();
         }
 
+        static private string readContact()
+        {
+            Console.WriteLine("Enter the contact name");
+            string input = Console.ReadLine();
+            return input;
+        }
         static private void showMainScreen()
         {
             Console.WriteLine("--------------- Contact Manager ---------------");
@@ -89,11 +84,10 @@
             }
              
         }
-
-
-
-
-
+        static void Main(string[] args)
+        {
+            ContactsManager();
+        }
     }
 
 }
