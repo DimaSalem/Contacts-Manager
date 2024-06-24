@@ -7,18 +7,32 @@
         enum enUserOptions { addContact = 1, removeContact = 2, viewAllContacts = 3 }
         static public List<string> AddContact(string contact)
         {
-            if (!string.IsNullOrEmpty(contact) && !contacts.Contains(contact.ToUpper()))
+            bool isDuplicate = contacts.Contains(contact.ToUpper());
+            if (!string.IsNullOrEmpty(contact) && !isDuplicate)
                 contacts.Add(contact.ToUpper());
+            else
+            {
+                if (isDuplicate)
+                    Console.WriteLine($"{contact} is already exist!");
+                else
+                    Console.WriteLine("Invalid input");
+            }
             return contacts;
         }
         static public List<string> RemoveContact(string contact) 
         {
             if (contacts.Contains(contact.ToUpper()))
                 contacts.Remove(contact.ToUpper());
+            else
+                Console.WriteLine("Contact is not exist!");
             return contacts;
         }
         static public List<string> ViewAllContacts()
         {
+            foreach (string item in contacts)
+            {
+                Console.WriteLine(item);
+            }
             return contacts;
         }
         static public void RemoveAllContacts() 
